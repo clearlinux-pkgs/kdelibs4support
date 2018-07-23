@@ -1,0 +1,29 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+kcompletion-dev
+kcodecs-dev
+kwidgetsaddons-dev
+kcrash-dev
+kdesignerplugin-dev
+kglobalaccel-dev
+kemoticons-dev
+kguiaddons-dev
+kiconthemes-dev
+kitemviews-dev
+kjobwidgets-dev
+solid-dev
+kxmlgui-dev
+knotifications-dev
+kparts-dev
+ktextwidgets-dev
+sonnet-dev
+kunitconversion-dev
+kwindowsystem-dev
+kdbusaddons-dev
+kded-dev
+docbook-xml
+perl-URI
+openssl-dev
+libSM-dev
+libICE-dev
+NetworkManager-dev
