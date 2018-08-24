@@ -1,2 +1,15 @@
 # This file contains pkgconfig build requirements that get picked up
 # but are undesirable. One entry per line, no whitespace.
+gstreamer-0.10
+lcms
+libagg
+libart-2.0
+libkdcraw
+libkipi>=${Kipi_FIND_VERSION}
+libpulse>=${PulseAudio_FIND_VERSION}
+libusb
+libxine
+polkit-qt
+poppler-qt4
+qimageblitz
+xmms
