@@ -4,7 +4,7 @@
 #
 Name     : kdelibs4support
 Version  : 5.49.0
-Release  : 2
+Release  : 3
 URL      : https://github.com/KDE/kdelibs4support/archive/v5.49.0.tar.gz
 Source0  : https://github.com/KDE/kdelibs4support/archive/v5.49.0.tar.gz
 Summary  : No detailed summary available
@@ -60,6 +60,7 @@ BuildRequires : pkgconfig(sqlite3)
 BuildRequires : python3
 BuildRequires : python3-dev
 BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtx11extras-dev
 BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 
@@ -149,7 +150,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535078696
+export SOURCE_DATE_EPOCH=1535427457
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -157,7 +158,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535078696
+export SOURCE_DATE_EPOCH=1535427457
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/kdelibs4support
 cp COPYING %{buildroot}/usr/share/doc/kdelibs4support/COPYING
@@ -927,6 +928,14 @@ popd
 /usr/share/kservicetypes5/kscan.desktop
 /usr/share/kservicetypes5/qimageio_plugin.desktop
 /usr/share/locale/kf5_all_languages
+/usr/share/xdg/colors/40.colors
+/usr/share/xdg/colors/Oxygen.colors
+/usr/share/xdg/colors/Rainbow.colors
+/usr/share/xdg/colors/Royal.colors
+/usr/share/xdg/colors/Web.colors
+/usr/share/xdg/kdebug.areas
+/usr/share/xdg/kdebugrc
+/usr/share/xdg/ksslcalist
 
 %files dev
 %defattr(-,root,root,-)
