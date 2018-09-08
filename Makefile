@@ -1,5 +1,5 @@
 PKG_NAME := kdelibs4support
-URL = https://github.com/KDE/kdelibs4support/archive/v5.49.0.tar.gz
+URL = https://download.kde.org/stable/frameworks/5.50/portingAids/kdelibs4support-5.50.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
