@@ -27,3 +27,4 @@ openssl-dev
 libSM-dev
 libICE-dev
 NetworkManager-dev
+libkipi-dev

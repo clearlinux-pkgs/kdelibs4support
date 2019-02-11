@@ -5,24 +5,26 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.50.0
-Release  : 5
-URL      : https://download.kde.org/stable/frameworks/5.50/portingAids/kdelibs4support-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/portingAids/kdelibs4support-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/portingAids/kdelibs4support-5.50.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 5.55.0
+Release  : 6
+URL      : https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz.sig
+Summary  : Porting aid from KDELibs4
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
-Requires: kdelibs4support-bin
-Requires: kdelibs4support-lib
-Requires: kdelibs4support-data
-Requires: kdelibs4support-license
-Requires: kdelibs4support-locales
-Requires: kdelibs4support-man
+Requires: kdelibs4support-bin = %{version}-%{release}
+Requires: kdelibs4support-data = %{version}-%{release}
+Requires: kdelibs4support-lib = %{version}-%{release}
+Requires: kdelibs4support-license = %{version}-%{release}
+Requires: kdelibs4support-locales = %{version}-%{release}
+Requires: kdelibs4support-man = %{version}-%{release}
 BuildRequires : NetworkManager-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
+BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
+BuildRequires : extra-cmake-modules pkgconfig(libpulse)
 BuildRequires : gettext-dev
 BuildRequires : kcodecs-dev
 BuildRequires : kcompletion-dev
@@ -56,13 +58,14 @@ BuildRequires : pkgconfig(exiv2)
 BuildRequires : pkgconfig(fontconfig)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
+BuildRequires : pkgconfig(libpulse)
 BuildRequires : pkgconfig(libpulse-mainloop-glib)
 BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : python3
 BuildRequires : python3-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 
@@ -79,9 +82,9 @@ country is missing, please let us know.
 %package bin
 Summary: bin components for the kdelibs4support package.
 Group: Binaries
-Requires: kdelibs4support-data
-Requires: kdelibs4support-license
-Requires: kdelibs4support-man
+Requires: kdelibs4support-data = %{version}-%{release}
+Requires: kdelibs4support-license = %{version}-%{release}
+Requires: kdelibs4support-man = %{version}-%{release}
 
 %description bin
 bin components for the kdelibs4support package.
@@ -98,10 +101,10 @@ data components for the kdelibs4support package.
 %package dev
 Summary: dev components for the kdelibs4support package.
 Group: Development
-Requires: kdelibs4support-lib
-Requires: kdelibs4support-bin
-Requires: kdelibs4support-data
-Provides: kdelibs4support-devel
+Requires: kdelibs4support-lib = %{version}-%{release}
+Requires: kdelibs4support-bin = %{version}-%{release}
+Requires: kdelibs4support-data = %{version}-%{release}
+Provides: kdelibs4support-devel = %{version}-%{release}
 
 %description dev
 dev components for the kdelibs4support package.
@@ -110,7 +113,7 @@ dev components for the kdelibs4support package.
 %package doc
 Summary: doc components for the kdelibs4support package.
 Group: Documentation
-Requires: kdelibs4support-man
+Requires: kdelibs4support-man = %{version}-%{release}
 
 %description doc
 doc components for the kdelibs4support package.
@@ -119,8 +122,8 @@ doc components for the kdelibs4support package.
 %package lib
 Summary: lib components for the kdelibs4support package.
 Group: Libraries
-Requires: kdelibs4support-data
-Requires: kdelibs4support-license
+Requires: kdelibs4support-data = %{version}-%{release}
+Requires: kdelibs4support-license = %{version}-%{release}
 
 %description lib
 lib components for the kdelibs4support package.
@@ -151,27 +154,27 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.50.0
+%setup -q -n kdelibs4support-5.55.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536439573
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549894034
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536439573
+export SOURCE_DATE_EPOCH=1549894034
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kdelibs4support
-cp COPYING %{buildroot}/usr/share/doc/kdelibs4support/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/kdelibs4support/COPYING.LIB
-cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/doc/kdelibs4support/cmake_modules_COPYING-CMAKE-SCRIPTS
+mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
+cp COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/COPYING.LIB
+cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/cmake_modules_COPYING-CMAKE-SCRIPTS
 pushd clr-build
 %make_install
 popd
@@ -1944,8 +1947,10 @@ popd
 
 %files doc
 %defattr(0644,root,root,0755)
+/usr/share/doc/HTML/ca/kcontrol5/kcm_ssl/details.png
 /usr/share/doc/HTML/ca/kcontrol5/kcm_ssl/index.cache.bz2
 /usr/share/doc/HTML/ca/kcontrol5/kcm_ssl/index.docbook
+/usr/share/doc/HTML/ca/kcontrol5/kcm_ssl/module.png
 /usr/share/doc/HTML/ca/kdebugdialog5/index.cache.bz2
 /usr/share/doc/HTML/ca/kdebugdialog5/index.docbook
 /usr/share/doc/HTML/de/kcontrol5/kcm_ssl/index.cache.bz2
@@ -1998,20 +2003,20 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.50.0
+/usr/lib64/libKF5KDELibs4Support.so.5.55.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
 /usr/lib64/qt5/plugins/kf5/kio/metainfo.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kdelibs4support/COPYING
-/usr/share/doc/kdelibs4support/COPYING.LIB
-/usr/share/doc/kdelibs4support/cmake_modules_COPYING-CMAKE-SCRIPTS
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kdelibs4support/COPYING
+/usr/share/package-licenses/kdelibs4support/COPYING.LIB
+/usr/share/package-licenses/kdelibs4support/cmake_modules_COPYING-CMAKE-SCRIPTS
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/kf5-config.1
 /usr/share/man/de/man1/kf5-config.1
 /usr/share/man/es/man1/kf5-config.1
