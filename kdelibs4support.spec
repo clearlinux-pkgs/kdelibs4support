@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.55.0
-Release  : 6
-URL      : https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz.sig
+Version  : 5.56.0
+Release  : 7
+URL      : https://download.kde.org/stable/frameworks/5.56/portingAids/kdelibs4support-5.56.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.56/portingAids/kdelibs4support-5.56.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.56/portingAids/kdelibs4support-5.56.0.tar.xz.sig
 Summary  : Porting aid from KDELibs4
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -24,8 +24,6 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
-BuildRequires : extra-cmake-modules pkgconfig(libpulse)
-BuildRequires : gettext-dev
 BuildRequires : kcodecs-dev
 BuildRequires : kcompletion-dev
 BuildRequires : kcrash-dev
@@ -48,6 +46,7 @@ BuildRequires : kxmlgui-dev
 BuildRequires : libICE-dev
 BuildRequires : libSM-dev
 BuildRequires : libX11-dev libICE-dev libSM-dev libXau-dev libXcomposite-dev libXcursor-dev libXdamage-dev libXdmcp-dev libXext-dev libXfixes-dev libXft-dev libXi-dev libXinerama-dev libXi-dev libXmu-dev libXpm-dev libXrandr-dev libXrender-dev libXres-dev libXScrnSaver-dev libXt-dev libXtst-dev libXv-dev libXxf86misc-dev libXxf86vm-dev
+BuildRequires : libkipi-dev
 BuildRequires : openssl-dev
 BuildRequires : perl
 BuildRequires : perl-URI
@@ -84,7 +83,6 @@ Summary: bin components for the kdelibs4support package.
 Group: Binaries
 Requires: kdelibs4support-data = %{version}-%{release}
 Requires: kdelibs4support-license = %{version}-%{release}
-Requires: kdelibs4support-man = %{version}-%{release}
 
 %description bin
 bin components for the kdelibs4support package.
@@ -105,6 +103,7 @@ Requires: kdelibs4support-lib = %{version}-%{release}
 Requires: kdelibs4support-bin = %{version}-%{release}
 Requires: kdelibs4support-data = %{version}-%{release}
 Provides: kdelibs4support-devel = %{version}-%{release}
+Requires: kdelibs4support = %{version}-%{release}
 
 %description dev
 dev components for the kdelibs4support package.
@@ -154,22 +153,23 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.55.0
+%setup -q -n kdelibs4support-5.56.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549894034
+export SOURCE_DATE_EPOCH=1552173123
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549894034
+export SOURCE_DATE_EPOCH=1552173123
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
 cp COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/COPYING
@@ -2003,7 +2003,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.55.0
+/usr/lib64/libKF5KDELibs4Support.so.5.56.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
