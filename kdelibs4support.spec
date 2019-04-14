@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.56.0
-Release  : 7
-URL      : https://download.kde.org/stable/frameworks/5.56/portingAids/kdelibs4support-5.56.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.56/portingAids/kdelibs4support-5.56.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.56/portingAids/kdelibs4support-5.56.0.tar.xz.sig
+Version  : 5.57.0
+Release  : 8
+URL      : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz.sig
 Summary  : Porting aid from KDELibs4
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -54,12 +54,7 @@ BuildRequires : pkg-config
 BuildRequires : pkgconfig(bluez)
 BuildRequires : pkgconfig(enchant)
 BuildRequires : pkgconfig(exiv2)
-BuildRequires : pkgconfig(fontconfig)
-BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gobject-2.0)
-BuildRequires : pkgconfig(libpulse)
-BuildRequires : pkgconfig(libpulse-mainloop-glib)
-BuildRequires : pkgconfig(libudev)
 BuildRequires : pkgconfig(smbclient)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : python3
@@ -153,23 +148,22 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.56.0
+%setup -q -n kdelibs4support-5.57.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1552173123
+export SOURCE_DATE_EPOCH=1555202458
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1552173123
+export SOURCE_DATE_EPOCH=1555202458
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
 cp COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/COPYING
@@ -1869,8 +1863,6 @@ popd
 /usr/lib64/cmake/KF5KDELibs4Support/FindExiv2.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindFFmpeg.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindFlac.cmake
-/usr/lib64/cmake/KF5KDELibs4Support/FindFontconfig.cmake
-/usr/lib64/cmake/KF5KDELibs4Support/FindGLIB2.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindGMP.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindGObject.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindGStreamer.cmake
@@ -1900,7 +1892,6 @@ popd
 /usr/lib64/cmake/KF5KDELibs4Support/FindOggVorbis.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindPlasma.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindPopplerQt4.cmake
-/usr/lib64/cmake/KF5KDELibs4Support/FindPulseAudio.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindPythonLibrary.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindQImageBlitz.cmake
 /usr/lib64/cmake/KF5KDELibs4Support/FindQt5Transitional.cmake
@@ -2003,7 +1994,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.56.0
+/usr/lib64/libKF5KDELibs4Support.so.5.57.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
