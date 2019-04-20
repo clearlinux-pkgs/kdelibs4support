@@ -6,7 +6,7 @@
 #
 Name     : kdelibs4support
 Version  : 5.57.0
-Release  : 9
+Release  : 10
 URL      : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz.sig
