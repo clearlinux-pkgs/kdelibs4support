@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.57.0
-Release  : 11
-URL      : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.57/portingAids/kdelibs4support-5.57.0.tar.xz.sig
+Version  : 5.58.0
+Release  : 12
+URL      : https://download.kde.org/stable/frameworks/5.58/portingAids/kdelibs4support-5.58.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.58/portingAids/kdelibs4support-5.58.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.58/portingAids/kdelibs4support-5.58.0.tar.xz.sig
 Summary  : Porting aid from KDELibs4
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -99,6 +99,7 @@ Requires: kdelibs4support-bin = %{version}-%{release}
 Requires: kdelibs4support-data = %{version}-%{release}
 Provides: kdelibs4support-devel = %{version}-%{release}
 Requires: kdelibs4support = %{version}-%{release}
+Requires: kdelibs4support = %{version}-%{release}
 
 %description dev
 dev components for the kdelibs4support package.
@@ -148,14 +149,14 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.57.0
+%setup -q -n kdelibs4support-5.58.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557009108
+export SOURCE_DATE_EPOCH=1557798638
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -170,7 +171,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557009108
+export SOURCE_DATE_EPOCH=1557798638
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
 cp COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/COPYING
@@ -2001,7 +2002,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.57.0
+/usr/lib64/libKF5KDELibs4Support.so.5.58.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
