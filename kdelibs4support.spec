@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.62.0
-Release  : 16
-URL      : https://download.kde.org/stable/frameworks/5.62/portingAids/kdelibs4support-5.62.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.62/portingAids/kdelibs4support-5.62.0.tar.xz
-Source1 : https://download.kde.org/stable/frameworks/5.62/portingAids/kdelibs4support-5.62.0.tar.xz.sig
+Version  : 5.63.0
+Release  : 17
+URL      : https://download.kde.org/stable/frameworks/5.63/portingAids/kdelibs4support-5.63.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.63/portingAids/kdelibs4support-5.63.0.tar.xz
+Source1 : https://download.kde.org/stable/frameworks/5.63/portingAids/kdelibs4support-5.63.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -65,14 +65,7 @@ BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 
 %description
-GENERAL
-=======
-In KDE we support localization of calendars, dates, time, numbers and
-money. KDE will use this when displaying such information, giving you
-a feeling that KDE was written to fit your national standards. To make
-this possible, we need to gather some information on your national
-standards. Currently there are some 237 countries supported. If your
-country is missing, please let us know.
+The rgb.txt comes from x.org (xc/programs/rgb/rgb.txt)
 
 %package bin
 Summary: bin components for the kdelibs4support package.
@@ -149,14 +142,14 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.62.0
+%setup -q -n kdelibs4support-5.63.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569730669
+export SOURCE_DATE_EPOCH=1571269902
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -172,12 +165,12 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1569730669
+export SOURCE_DATE_EPOCH=1571269902
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
-cp COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/COPYING.LIB
-cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/cmake_modules_COPYING-CMAKE-SCRIPTS
+cp %{_builddir}/kdelibs4support-5.63.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kdelibs4support-5.63.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdelibs4support-5.63.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -2003,7 +1996,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.62.0
+/usr/lib64/libKF5KDELibs4Support.so.5.63.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
@@ -2011,9 +2004,9 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kdelibs4support/COPYING
-/usr/share/package-licenses/kdelibs4support/COPYING.LIB
-/usr/share/package-licenses/kdelibs4support/cmake_modules_COPYING-CMAKE-SCRIPTS
+/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
+/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
 
 %files man
 %defattr(0644,root,root,0755)
