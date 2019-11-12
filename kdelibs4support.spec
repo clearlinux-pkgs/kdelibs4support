@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.63.0
-Release  : 17
-URL      : https://download.kde.org/stable/frameworks/5.63/portingAids/kdelibs4support-5.63.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.63/portingAids/kdelibs4support-5.63.0.tar.xz
-Source1 : https://download.kde.org/stable/frameworks/5.63/portingAids/kdelibs4support-5.63.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 5.64.0
+Release  : 18
+URL      : https://download.kde.org/stable/frameworks/5.64/portingAids/kdelibs4support-5.64.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.64/portingAids/kdelibs4support-5.64.0.tar.xz
+Source1 : https://download.kde.org/stable/frameworks/5.64/portingAids/kdelibs4support-5.64.0.tar.xz.sig
+Summary  : Porting aid from KDELibs4
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
 Requires: kdelibs4support-bin = %{version}-%{release}
@@ -65,7 +65,14 @@ BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 
 %description
-The rgb.txt comes from x.org (xc/programs/rgb/rgb.txt)
+GENERAL
+=======
+In KDE we support localization of calendars, dates, time, numbers and
+money. KDE will use this when displaying such information, giving you
+a feeling that KDE was written to fit your national standards. To make
+this possible, we need to gather some information on your national
+standards. Currently there are some 237 countries supported. If your
+country is missing, please let us know.
 
 %package bin
 Summary: bin components for the kdelibs4support package.
@@ -92,6 +99,7 @@ Requires: kdelibs4support-lib = %{version}-%{release}
 Requires: kdelibs4support-bin = %{version}-%{release}
 Requires: kdelibs4support-data = %{version}-%{release}
 Provides: kdelibs4support-devel = %{version}-%{release}
+Requires: kdelibs4support = %{version}-%{release}
 Requires: kdelibs4support = %{version}-%{release}
 
 %description dev
@@ -142,16 +150,17 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.63.0
+%setup -q -n kdelibs4support-5.64.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571269902
+export SOURCE_DATE_EPOCH=1573533993
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -165,12 +174,12 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1571269902
+export SOURCE_DATE_EPOCH=1573533993
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
-cp %{_builddir}/kdelibs4support-5.63.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kdelibs4support-5.63.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kdelibs4support-5.63.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kdelibs4support-5.64.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kdelibs4support-5.64.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdelibs4support-5.64.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -1996,7 +2005,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.63.0
+/usr/lib64/libKF5KDELibs4Support.so.5.64.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
