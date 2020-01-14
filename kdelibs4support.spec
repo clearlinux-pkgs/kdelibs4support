@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.65.0
-Release  : 19
-URL      : https://download.kde.org/stable/frameworks/5.65/portingAids/kdelibs4support-5.65.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.65/portingAids/kdelibs4support-5.65.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.65/portingAids/kdelibs4support-5.65.0.tar.xz.sig
+Version  : 5.66.0
+Release  : 20
+URL      : https://download.kde.org/stable/frameworks/5.66/portingAids/kdelibs4support-5.66.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.66/portingAids/kdelibs4support-5.66.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.66/portingAids/kdelibs4support-5.66.0.tar.xz.sig
 Summary  : Porting aid from KDELibs4
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -65,11 +65,9 @@ BuildRequires : solid-dev
 BuildRequires : sonnet-dev
 
 %description
-these are additional cmake modules required for compiling KDE3 or KDE4
-applications with cmake. Some of them are enhanced versions of the files
-coming with cmake, some of them are NOT yet part of cmake.
-To use them, copy them into the cmake Module directory or
-run "cmake ."  followed by "make install"
+Run cmake on the CMakeLists.txt file in this directory and it will print out
+the value of some cmake variables. These variables can be used in
+CMakeLists.txt to determine the current system type.
 
 %package bin
 Summary: bin components for the kdelibs4support package.
@@ -146,15 +144,15 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.65.0
-cd %{_builddir}/kdelibs4support-5.65.0
+%setup -q -n kdelibs4support-5.66.0
+cd %{_builddir}/kdelibs4support-5.66.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576548007
+export SOURCE_DATE_EPOCH=1578967864
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -170,12 +168,12 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1576548007
+export SOURCE_DATE_EPOCH=1578967864
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
-cp %{_builddir}/kdelibs4support-5.65.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kdelibs4support-5.65.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kdelibs4support-5.65.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kdelibs4support-5.66.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kdelibs4support-5.66.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdelibs4support-5.66.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -2001,7 +1999,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.65.0
+/usr/lib64/libKF5KDELibs4Support.so.5.66.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
