@@ -6,7 +6,7 @@
 #
 Name     : kdelibs4support
 Version  : 5.76.0
-Release  : 30
+Release  : 31
 URL      : https://download.kde.org/stable/frameworks/5.76/portingAids/kdelibs4support-5.76.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.76/portingAids/kdelibs4support-5.76.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.76/portingAids/kdelibs4support-5.76.0.tar.xz.sig
