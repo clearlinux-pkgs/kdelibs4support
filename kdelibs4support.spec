@@ -6,7 +6,7 @@
 #
 Name     : kdelibs4support
 Version  : 5.90.0
-Release  : 43
+Release  : 44
 URL      : https://download.kde.org/stable/frameworks/5.90/portingAids/kdelibs4support-5.90.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.90/portingAids/kdelibs4support-5.90.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.90/portingAids/kdelibs4support-5.90.0.tar.xz.sig
@@ -161,7 +161,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1642101713
+export SOURCE_DATE_EPOCH=1643435788
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -177,7 +177,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1642101713
+export SOURCE_DATE_EPOCH=1643435788
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
 cp %{_builddir}/kdelibs4support-5.90.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
@@ -948,6 +948,14 @@ popd
 /usr/share/kservicetypes5/kscan.desktop
 /usr/share/kservicetypes5/qimageio_plugin.desktop
 /usr/share/locale/kf5_all_languages
+/usr/share/xdg/colors/40.colors
+/usr/share/xdg/colors/Oxygen.colors
+/usr/share/xdg/colors/Rainbow.colors
+/usr/share/xdg/colors/Royal.colors
+/usr/share/xdg/colors/Web.colors
+/usr/share/xdg/kdebug.areas
+/usr/share/xdg/kdebugrc
+/usr/share/xdg/ksslcalist
 
 %files dev
 %defattr(-,root,root,-)
