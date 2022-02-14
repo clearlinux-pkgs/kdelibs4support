@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kdelibs4support
-Version  : 5.90.0
-Release  : 44
-URL      : https://download.kde.org/stable/frameworks/5.90/portingAids/kdelibs4support-5.90.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.90/portingAids/kdelibs4support-5.90.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.90/portingAids/kdelibs4support-5.90.0.tar.xz.sig
+Version  : 5.91.0
+Release  : 45
+URL      : https://download.kde.org/stable/frameworks/5.91/portingAids/kdelibs4support-5.91.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.91/portingAids/kdelibs4support-5.91.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.91/portingAids/kdelibs4support-5.91.0.tar.xz.sig
 Summary  : Porting aid from KDELibs4
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 LGPL-2.1
@@ -26,6 +26,7 @@ BuildRequires : docbook-xml
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
 BuildRequires : extra-cmake-modules pkgconfig(xcb) xcb-util-cursor-dev xcb-util-image-dev xcb-util-keysyms-dev xcb-util-renderutil-dev xcb-util-wm-dev xcb-util-dev
 BuildRequires : extra-cmake-modules-data
+BuildRequires : kauth-dev
 BuildRequires : kcodecs-dev
 BuildRequires : kcompletion-dev
 BuildRequires : kconfig-dev
@@ -153,15 +154,15 @@ man components for the kdelibs4support package.
 
 
 %prep
-%setup -q -n kdelibs4support-5.90.0
-cd %{_builddir}/kdelibs4support-5.90.0
+%setup -q -n kdelibs4support-5.91.0
+cd %{_builddir}/kdelibs4support-5.91.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1643435788
+export SOURCE_DATE_EPOCH=1644873677
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -177,12 +178,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1643435788
+export SOURCE_DATE_EPOCH=1644873677
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
-cp %{_builddir}/kdelibs4support-5.90.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/kdelibs4support-5.90.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
-cp %{_builddir}/kdelibs4support-5.90.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kdelibs4support-5.91.0/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/kdelibs4support-5.91.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kdelibs4support/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/kdelibs4support-5.91.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kdelibs4support/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -1750,6 +1751,7 @@ popd
 /usr/include/KF5/KDELibs4Support/kdefakes.h
 /usr/include/KF5/KDELibs4Support/kdelibs4support_export.h
 /usr/include/KF5/KDELibs4Support/kdelibs4support_export_internal.h
+/usr/include/KF5/KDELibs4Support/kdelibs4support_version.h
 /usr/include/KF5/KDELibs4Support/kdemacros.h
 /usr/include/KF5/KDELibs4Support/kdeprintdialog.h
 /usr/include/KF5/KDELibs4Support/kdeversion.h
@@ -1851,7 +1853,6 @@ popd
 /usr/include/KF5/KDELibs4Support/qtest_kde.h
 /usr/include/KF5/KDELibs4Support/solid/networking.h
 /usr/include/KF5/KDELibs4Support/solid/powermanagement.h
-/usr/include/KF5/kdelibs4support_version.h
 /usr/lib64/cmake/KDELibs4/KDELibsDependencies.cmake
 /usr/lib64/cmake/KDELibs4/KF5KDELibs4LibraryTargets-relwithdebinfo.cmake
 /usr/lib64/cmake/KDELibs4/KF5KDELibs4LibraryTargets.cmake
@@ -2013,7 +2014,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5KDELibs4Support.so.5
-/usr/lib64/libKF5KDELibs4Support.so.5.90.0
+/usr/lib64/libKF5KDELibs4Support.so.5.91.0
 /usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /usr/lib64/qt5/plugins/kcm_ssl.so
 /usr/lib64/qt5/plugins/kf5/kded/networkstatus.so
@@ -2030,6 +2031,7 @@ popd
 /usr/share/man/ca/man1/kf5-config.1
 /usr/share/man/de/man1/kf5-config.1
 /usr/share/man/es/man1/kf5-config.1
+/usr/share/man/fr/man1/kf5-config.1
 /usr/share/man/it/man1/kf5-config.1
 /usr/share/man/man1/kf5-config.1
 /usr/share/man/nl/man1/kf5-config.1
