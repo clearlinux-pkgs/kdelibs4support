@@ -7,7 +7,7 @@
 #
 Name     : kdelibs4support
 Version  : 5.106.0
-Release  : 62
+Release  : 63
 URL      : https://download.kde.org/stable/frameworks/5.106/portingAids/kdelibs4support-5.106.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.106/portingAids/kdelibs4support-5.106.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.106/portingAids/kdelibs4support-5.106.0.tar.xz.sig
@@ -166,7 +166,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684948381
+export SOURCE_DATE_EPOCH=1685570394
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -199,7 +199,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684948381
+export SOURCE_DATE_EPOCH=1685570394
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kdelibs4support
 cp %{_builddir}/kdelibs4support-%{version}/COPYING %{buildroot}/usr/share/package-licenses/kdelibs4support/7c203dee3a03037da436df03c4b25b659c073976 || :
@@ -988,7 +988,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5KDELibs4Support.so
 /usr/include/KF5/KDELibs4Support/KDE/ConversionCheck/QVconvertible
 /usr/include/KF5/KDELibs4Support/KDE/ConversionCheck/type_toQString
 /usr/include/KF5/KDELibs4Support/KDE/ConversionCheck/type_toQVariant
@@ -2046,7 +2045,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5KDELibs4Support.so.5
 /V3/usr/lib64/libKF5KDELibs4Support.so.5.106.0
 /V3/usr/lib64/qt5/plugins/designer/kf5deprecatedwidgets.so
 /V3/usr/lib64/qt5/plugins/kcm_ssl.so
